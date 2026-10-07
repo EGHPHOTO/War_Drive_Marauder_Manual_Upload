@@ -15,7 +15,7 @@ The legacy CYD architecture wires the microSD card module, touch matrix layer, a
 
 ## ⚙️ Post-Installation Configuration
 
-Before flashing the code to your **ESP32-C3 Supermini**, you must open the source `.ino` sketch file and modify the **`USER CONFIGURATION`** block (Lines 9 through 17) to match your own physical network credentials and personal database routing tokens. Leaving the default placeholder values active will cause immediate Wi-Fi connection and upload handshake failures.
+Before flashing the code to your **ESP32-C3 Supermini**, you must open the source `.ino` sketch file and modify the **`USER CONFIGURATION`** block (Lines 9 through 18) to match your own physical network credentials and personal database routing tokens. Leaving the default placeholder values active will cause immediate Wi-Fi connection and upload handshake failures.
 
 ### 📱 1. Network Credentials Layout
 * `WIFI_PRIMARY_SSID` / `WIFI_PRIMARY_PASS`: Enter the exact name and password of your primary home router network (2.4 GHz band mandatory).
@@ -26,6 +26,7 @@ Before flashing the code to your **ESP32-C3 Supermini**, you must open the sourc
 To retrieve your unique upload tokens, sign into your personal tracking accounts on a web browser and capture the following parameters:
 * **WiGLE Keys:** Navigate to your **WiGLE API Tokens** settings page. Generate an API pair. Paste your long alphanumeric API Name directly into `WIGLE_USER`, and your corresponding secret key into `WIGLE_TOKEN`.
 * **WDGWars Token:** Log into your profile layout, head to settings, and locate your **64-character hex API key**. Copy the entire string value and paste it cleanly inside the `WDG_API_KEY` parameter quotes.
+* **WarDrift Token:** Log into your dashboard at `wardrift.net`, locate your unique account profile token, and paste the Bearer key string directly into the `WARDRIFT_TOKEN` quotes.
 
 ---
 
@@ -36,8 +37,8 @@ The onboard 0.42" display and the verbose Serial Monitor (115200 baud) guide you
 3. `[WIFI] Connected cleanly!` — Establishes an encrypted wireless handshake over your active hotspot.
 4. `[QUEUE FOUND]` — Scans the root directory for target files (`.log` or `.csv` files).
 5. `Streaming file payloads...` — Pipes data blocks over high-speed **512-byte chunking buffers** to feed network streams cleanly without underruns.
-6. `[SYNC COMPLETE]` — Cleanly purges the local log file *only* after getting verified receipt tokens.
-7. `[DUPLICATE DISCOVERY]` — Smart fallback net automatically clears out files already hosted on the servers to break endless loops.
+6. `[SYNC COMPLETE]` — Cleanly purges the local log file *only* after getting verified receipt tokens across active platform targets.
+7. `[DUPLICATE DISCOVERY]` — Smart fallback net automatically parses API conflict blocks (such as a WarDrift 405 endpoint response or a WDGWars 409 duplicate mismatch) to safely clear duplicate files and break endless loop cycles if the files are already successfully hosted on primary databases.
 
 ---
 
@@ -77,7 +78,7 @@ This project is an open-source companion utility built upon the incredible found
 * **ESP32 Marauder:** Framework created by **JustCallMeKoko**.
 * **The Biscuit App:** Dual-band environment created by **Alexandre01**.
 * **U8g2 Graphics Engine:** Vector font mapping modules written by **olikraus**.
-* **Visual Map Targets:** Deep thanks to the engineering teams running **WiGLE.net** and **WDGWars.pl**.
+* **Visual Map & Game Targets:** Deep thanks to the engineering infrastructure teams running **WiGLE.net**, **WDGWars.pl**, and **WarDrift.net**.
 
 ---
 
@@ -86,4 +87,5 @@ Distributed under the high-permissibility open-source **MIT License**. See the a
 
 ![Physical Solder Map Layout](images/wiring_diagram.png)
 *Figure 1: Complete 6-wire physical undersurface solder trace schematic mapped across the active hardware components.*
+
 
