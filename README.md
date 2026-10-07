@@ -83,3 +83,7 @@ This project is an open-source companion utility built upon the incredible found
 
 ## 📄 Open-Source License
 Distributed under the high-permissibility open-source **MIT License**. See the accompanying `LICENSE` file for full terms.
+
+![Physical Solder Map Layout](images/wiring_diagram.png)
+*Figure 1: Complete 6-wire physical undersurface solder trace schematic mapped across the active hardware components.*
+
