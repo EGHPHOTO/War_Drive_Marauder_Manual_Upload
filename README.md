@@ -51,14 +51,17 @@ The onboard 0.42" display and the verbose Serial Monitor (115200 baud) guide you
 
 ### Undersurface Solder Configuration:
 
-| Micro SD Module Pin | ESP32-C3 Supermini Board Pin | Function Type | Wire Color Profile |
-| :--- | :--- | :--- | :--- |
-| **GND** | **GND / GD** | Ground Loop | Black Wire |
-| **VCC** | **5V / V5** | Input Power | Red Wire |
-| **MISO** | **GPIO 1** | Hardware SPI Data In | White Wire |
-| **MOSI** | **GPIO 3** | Hardware SPI Data Out | Green Wire |
-| **SCK** | **GPIO 4** | Hardware SPI Clock | Yellow Wire |
-| **CS** | **GPIO 2** | Hardware SPI Chip Select | Blue Wire |
+| Component Signal Source | ESP32-C3 Destination Pin | Hardware Configuration / Circuit Type |
+| :--- | :--- | :--- |
+| **GND (MicroSD Board)** | **GND / GD Pad** | Common Reference Ground Loop |
+| **VCC (MicroSD Board)** | **5V / V5 Pad** | 5V Main Power Input Rail |
+| **MISO (MicroSD Board)** | **GPIO 1 (Pad 1)** | Hardware SPI Data In |
+| **MOSI (MicroSD Board)** | **GPIO 3 (Pad 3)** | Hardware SPI Data Out |
+| **SCK (MicroSD Board)** | **GPIO 4 (Pad 4)** | Hardware SPI Clock Sync Pulse |
+| **CS (MicroSD Board)** | **GPIO 2 (Pad 2)** | Hardware SPI Chip Select Toggle |
+| **GPIO 9 (C3 Board)** | **3V3 Pad** | Inline 22kΩ Pull-Up Resistor (Bypasses Floating USB Boot Loop) |
+| **VCC ➡️ GND (SD Board)** | **GPIO 0 (Pad 0)** | Shared 22kΩ x 2 Resistor Divider Network (Soldered direct to reader pads for space efficiency) |
+
 
 *Note: The built-in 0.42" OLED panel is hardwired by the factory directly to **GPIO 5 (SDA)** and **GPIO 6 (SCL)**, keeping the display totally isolated from your card data lines to prevent bus collisions.*
 
