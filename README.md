@@ -64,6 +64,7 @@ The onboard 0.42" display and the verbose Serial Monitor (115200 baud) guide you
 
 
 *Note: The built-in 0.42" OLED panel is hardwired by the factory directly to **GPIO 5 (SDA)** and **GPIO 6 (SCL)**, keeping the display totally isolated from your card data lines to prevent bus collisions.*
+*Note: The dual-resistor voltage divider is soldered directly across the back of the MicroSD card breakout pads to preserve critical space inside the 3D-printed pocket enclosure housing.*
 
 ---
 
