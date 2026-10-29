@@ -58,6 +58,13 @@ bool connectToWiFi() {
   
   for (int i = 0; i < 2; i++) {
     if (strlen(ssids[i]) == 0) continue;
+    
+    // --- THE CRUCIAL RADIO REGISTER RESET FIX ---
+    // Forces the chip to stop hunting for the previous missing network,
+    // clears the background registers, and primes it for the next SSID.
+    WiFi.disconnect();
+    delay(200); 
+    
     Serial.printf("[WIFI] Attempting connection to SSID: %s\n", ssids[i]);
     displayMsg("Connect WiFi", ssids[i]);
     
